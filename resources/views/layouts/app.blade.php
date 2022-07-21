@@ -57,7 +57,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('user_profile/show/'.Auth::user()->id) }}">
+                                    <a class="dropdown-item" href="{{ route('user-profiles.show',$userProfile->id) }}">
                                         Lihat Profil
                                     </a>
                                     <a class="dropdown-item" href="{{ route('user-profiles.create') }}">
