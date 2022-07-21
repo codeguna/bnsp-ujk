@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class UserProfile extends Model
 {
-    
+
     static $rules = [
 		'user_id' => 'required',
 		'full_name' => 'required',
@@ -30,7 +30,7 @@ class UserProfile extends Model
     ];
 
     protected $perPage = 20;
-
+    protected $table = 'user_profile';
     /**
      * Attributes that should be mass-assignable.
      *
@@ -46,6 +46,6 @@ class UserProfile extends Model
     {
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
-    
+
 
 }

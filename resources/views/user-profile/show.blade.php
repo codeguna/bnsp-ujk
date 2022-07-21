@@ -19,11 +19,6 @@
                     </div>
 
                     <div class="card-body">
-                        
-                        <div class="form-group">
-                            <strong>User Id:</strong>
-                            {{ $userProfile->user_id }}
-                        </div>
                         <div class="form-group">
                             <strong>Full Name:</strong>
                             {{ $userProfile->full_name }}
@@ -34,7 +29,7 @@
                         </div>
                         <div class="form-group">
                             <strong>Image:</strong>
-                            {{ $userProfile->image }}
+                            <img width="150px" src="{{ url('/data_file/'.$userProfile->image) }}">
                         </div>
 
                     </div>

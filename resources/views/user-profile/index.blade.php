@@ -35,7 +35,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>User Id</th>
 										<th>Full Name</th>
 										<th>City</th>
@@ -48,14 +48,14 @@
                                     @foreach ($userProfiles as $userProfile)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $userProfile->user_id }}</td>
 											<td>{{ $userProfile->full_name }}</td>
 											<td>{{ $userProfile->city }}</td>
-											<td>{{ $userProfile->image }}</td>
+											<td><img width="150px" src="{{ url('/data_file/'.$userProfile->image) }}"></td>
 
                                             <td>
-                                                <form action="{{ route('user-profiles.destroy',$userProfile->id) }}" method="POST">
+                                                <form action="{{ route('user-profiles.destroy',$userProfile->id) }}" method="GET">
                                                     <a class="btn btn-sm btn-primary " href="{{ route('user-profiles.show',$userProfile->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('user-profiles.edit',$userProfile->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf

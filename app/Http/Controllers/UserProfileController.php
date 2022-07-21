@@ -45,9 +45,29 @@ class UserProfileController extends Controller
     {
         request()->validate(UserProfile::$rules);
 
-        $userProfile = UserProfile::create($request->all());
+        $this->validate($request, [
+			'image' => 'required|file|image|mimes:jpeg,png,jpg|max:2048',
+		]);
 
-        return redirect()->route('user-profiles.index')
+		// menyimpan data file yang diupload ke variabel $file
+		$file = $request->file('image');
+
+		$nama_file = time()."_".$file->getClientOriginalName();
+
+      	        // isi dengan nama folder tempat kemana file diupload
+		$tujuan_upload = 'data_file';
+		$file->move($tujuan_upload,$nama_file);
+
+		UserProfile::create([
+            'user_id' => $request->user_id,
+            'full_name' => $request->full_name,
+            'city' => $request->city,
+			'image' => $nama_file,
+		]);
+
+
+
+        return redirect()->route('home')
             ->with('success', 'UserProfile created successfully.');
     }
 
@@ -60,7 +80,6 @@ class UserProfileController extends Controller
     public function show($id)
     {
         $userProfile = UserProfile::find($id);
-
         return view('user-profile.show', compact('userProfile'));
     }
 
