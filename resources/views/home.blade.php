@@ -5,16 +5,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
-
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    <div class="row">
+                        <form action="{{ route('posts.store') }}" method="POST">
+                            @csrf
+                            <div class="col-md-12">
+                            <div class="mb-3">
+                                <label>Create Post</label>
+                              <textarea name="content" class="form-control" cols="30" rows="4"></textarea>
+                            </div>
+                            <button class="btn btn-primary">Post</button>
                         </div>
-                    @endif
+                    </form>
 
-                    You are logged in!
+                    </div>
                 </div>
             </div>
         </div>

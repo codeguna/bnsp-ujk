@@ -28,4 +28,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/user_profile/update/{id}', 'UserProfileController@update')->name('user-profiles.update');
     Route::get('/user_profile/edit/{id}', 'UserProfileController@edit')->name('user-profiles.edit');
     //End Route User Profile
+    Route::resource('posts', 'PostController');
 });

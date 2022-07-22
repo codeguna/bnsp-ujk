@@ -57,9 +57,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('user-profiles.show',$userProfile->id) }}">
+                                    {{-- <a class="dropdown-item" href="{{ route('user-profiles.show',$userProfile->id) }}">
                                         Lihat Profil
-                                    </a>
+                                    </a> --}}
                                     <a class="dropdown-item" href="{{ route('user-profiles.create') }}">
                                         Update Profil
                                     </a>
