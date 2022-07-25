@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tag extends Model
 {
-    
+
     static $rules = [
 		'post_id' => 'required',
 		'name' => 'required',
@@ -40,8 +40,8 @@ class Tag extends Model
      */
     public function post()
     {
-        return $this->hasOne('App\Models\Post', 'id', 'post_id');
+        return $this->belongsTo('App\Models\Post');
     }
-    
+
 
 }

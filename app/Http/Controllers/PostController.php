@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 /**
@@ -44,10 +45,43 @@ class PostController extends Controller
     public function store(Request $request)
     {
         request()->validate(Post::$rules);
+        /*
+        UPLOAD GAMBAR
+        */
+        // menyimpan data file yang diupload ke variabel $file
+		$file_image = $request->file('image');
 
-        $post = Post::create($request->all());
+		$nama_file_img = time()."_".$file_image->getClientOriginalName();
 
-        return redirect()->route('posts.index')
+      	        // isi dengan nama folder tempat kemana file diupload
+		$tujuan_upload = 'data_image';
+		$file_image->move($tujuan_upload,$nama_file_img);
+
+        /*
+        UPLOAD FILE
+        */
+        // menyimpan data file yang diupload ke variabel $file
+		$file = $request->file('file');
+
+		$nama_file = time()."_".$file->getClientOriginalName();
+
+      	        // isi dengan nama folder tempat kemana file diupload
+		$tujuan_upload = 'data_file';
+		$file->move($tujuan_upload,$nama_file);
+
+
+        $post = Post::create([
+            'user_id' => $request->user_id,
+            'content' => $request->content,
+            'image' => $nama_file_img,
+			'file' => $nama_file,
+		]);
+
+        Tag::create([
+            'post_id' => $post->id,
+            'name' => $request->name
+		]);
+        return redirect()->route('home')
             ->with('success', 'Post created successfully.');
     }
 
@@ -103,7 +137,7 @@ class PostController extends Controller
     {
         $post = Post::find($id)->delete();
 
-        return redirect()->route('posts.index')
+        return redirect()->route('home')
             ->with('success', 'Post deleted successfully');
     }
 }

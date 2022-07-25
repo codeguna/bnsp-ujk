@@ -19,9 +19,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
-    
+
     static $rules = [
 		'post_id' => 'required',
+        'user_id' => 'required',
 		'content' => 'required',
     ];
 
@@ -32,7 +33,7 @@ class Comment extends Model
      *
      * @var array
      */
-    protected $fillable = ['post_id','content'];
+    protected $fillable = ['post_id','content', 'user_id'];
 
 
     /**
@@ -40,8 +41,13 @@ class Comment extends Model
      */
     public function post()
     {
-        return $this->hasOne('App\Models\Post', 'id', 'post_id');
+        return $this->belongsTo('App\Models\Post');
     }
-    
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
 
 }

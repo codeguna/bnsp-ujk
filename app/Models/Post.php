@@ -24,13 +24,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Post extends Model
 {
-    
+
     static $rules = [
-		'user_id' => 'required',
-		'comments_id' => 'required',
-		'image' => 'required',
-		'file' => 'required',
-		'content' => 'required',
+        'image' => 'file|image|mimes:jpeg,png,jpg|max:2048',
+		'content' => 'required|max:250'
     ];
 
     protected $perPage = 20;
@@ -40,7 +37,7 @@ class Post extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id','comments_id','image','file','content'];
+    protected $fillable = ['user_id','image','file','content'];
 
 
     /**
@@ -48,24 +45,24 @@ class Post extends Model
      */
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment', 'post_id', 'id');
+        return $this->hasMany('App\Models\Comment');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function tags()
     {
-        return $this->hasMany('App\Models\Tag', 'post_id', 'id');
+        return $this->hasMany('App\Models\Tag');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function user()
     {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
+        return $this->belongsTo('App\User');
     }
-    
+
 
 }

@@ -11,10 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::redirect('/', 'home');
+Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
@@ -29,4 +27,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/user_profile/edit/{id}', 'UserProfileController@edit')->name('user-profiles.edit');
     //End Route User Profile
     Route::resource('posts', 'PostController');
+    Route::resource('comments', 'CommentController');
 });

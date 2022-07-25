@@ -1,15 +1,10 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
+
         <div class="form-group">
             {{ Form::label('user_id') }}
             {{ Form::text('user_id', $post->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : ''), 'placeholder' => 'User Id']) }}
             {!! $errors->first('user_id', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
-        <div class="form-group">
-            {{ Form::label('comments_id') }}
-            {{ Form::text('comments_id', $post->comments_id, ['class' => 'form-control' . ($errors->has('comments_id') ? ' is-invalid' : ''), 'placeholder' => 'Comments Id']) }}
-            {!! $errors->first('comments_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('image') }}

@@ -47,7 +47,7 @@ class CommentController extends Controller
 
         $comment = Comment::create($request->all());
 
-        return redirect()->route('comments.index')
+        return redirect()->route('home')
             ->with('success', 'Comment created successfully.');
     }
 
