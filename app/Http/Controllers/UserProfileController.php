@@ -109,7 +109,7 @@ class UserProfileController extends Controller
 
         $userProfile->update($request->all());
 
-        return redirect()->route('user-profiles.index')
+        return redirect()->route('home')
             ->with('success', 'UserProfile updated successfully');
     }
 

@@ -3,7 +3,7 @@
 @section('content')
     @foreach ($posts as $p)
         <div class="posty">
-            <div class="post-bar no-margin">
+            <div class="post-bar">
                 <div class="post_topbar">
                     <div class="usy-dt">
                         @php($id_image = Auth::user()->user_profile->image)
@@ -17,13 +17,16 @@
                         <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
                         <ul class="ed-options">
                             <li><a class="btn btn-sm btn-success" href="{{ route('posts.edit',$p->id) }}">Edit</a></li>
-                            <li>
+                            @if (Auth::user()->user_profile->id == $p->user_id)
+                               <li>
                                 <form action="{{ route('posts.destroy',$p->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 </form>
-                            </li>
+                                </li>
+                            @endif
+
                         </ul>
                     </div>
                 </div>

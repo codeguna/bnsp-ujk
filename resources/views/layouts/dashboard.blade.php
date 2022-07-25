@@ -61,6 +61,9 @@
                                     onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">Logout</a></h3>
                         </div>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                         <!--user-account-settingss end-->
                     </div>
                 </div>
