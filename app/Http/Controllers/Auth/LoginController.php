@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserProfile;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -27,7 +29,17 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected function authenticated()
+    {
+    $id = Auth::id();
+    $user_profile = UserProfile::find($id);
+
+    if($user_profile != null){
+        return redirect('/home');
+    }
+    else
+     return redirect('/user_profile/create');
+    }
 
     /**
      * Create a new controller instance.

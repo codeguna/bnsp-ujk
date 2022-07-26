@@ -7,7 +7,7 @@
                 <div class="post_topbar">
                     <div class="usy-dt">
                         @php($id_image = Auth::user()->user_profile->image)
-                        <img width="50px" src="{{ url('/data_image/' . $id_image) }}" alt="">
+                        <img width="50px" src="{{ url('/data_file/' . $id_image) }}" alt="">
                         <div class="usy-name">
                             <h3>{{ $p->user->name }}</h3>
                             <span><img src="{{ asset('v2/images/clock.png') }}" alt="">{{ $p->created_at }}</span>
@@ -50,8 +50,6 @@
                         @forelse ($p->comments as $c)
                             <li>
                                 <div class="comment-list">
-
-
                                     <div class="bg-img">
                                         <img src="http://via.placeholder.com/40x40" alt="">
                                     </div>
