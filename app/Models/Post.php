@@ -64,5 +64,10 @@ class Post extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function user_profile()
+    {
+        return $this->belongsTo('App\Models\UserProfile');
+    }
+
 
 }

@@ -47,5 +47,11 @@ class UserProfile extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function post()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
+
+
 
 }

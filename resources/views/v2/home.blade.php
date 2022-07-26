@@ -44,6 +44,7 @@
                 </div>
             </div>
             <!--post-bar end-->
+            <div style="margin: 50px"></div>
             <div class="comment-section">
                 <div class="comment-sec">
                     <ul>
@@ -51,14 +52,26 @@
                             <li>
                                 <div class="comment-list">
                                     <div class="bg-img">
-                                        <img src="http://via.placeholder.com/40x40" alt="">
+                                        <img height="30px" src="{{ url('/data_file/' . $id_image) }}" alt="">
                                     </div>
                                     <div class="comment">
                                         <h3>{{ $c->user->name }}</h3>
-                                        <span><img src="{{ asset('v2/') }}/clock.png" alt=""> 3 min ago</span>
+                                        <span><img src="{{ asset('v2/images/clock.png') }}" alt=""> {{ $c->created_at }}</span>
                                         <p>{{ $c->content }}</p>
+
+                                        @if(Auth::user()->id === $c->user_id)
+                                        <p><form action="{{ route('comments.destroy',$c->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a class="btn btn-sm btn-success" href="{{ route('comments.edit',$c->id) }}"><i class="fa fa-fw fa-edit"></i></a>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i></button>
+                                        </form>
+                                        </p>
+                                        @else
+                                        @endif
                                     </div>
                                 </div>
+                                <hr>
                                 <!--comment-list end-->
                             </li>
 

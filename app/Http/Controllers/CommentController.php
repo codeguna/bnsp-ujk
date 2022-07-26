@@ -103,7 +103,7 @@ class CommentController extends Controller
     {
         $comment = Comment::find($id)->delete();
 
-        return redirect()->route('comments.index')
+        return redirect()->route('home')
             ->with('success', 'Comment deleted successfully');
     }
 }

@@ -48,7 +48,7 @@
                     <!--menu-btn end-->
                     <div class="user-account">
                         <div class="user-info">
-                            <img width="30px" height="40px" src="{{ url('/data_file/' . $id_image) }}" alt="">
+                            <img width="30px" src="{{ url('/data_file/' . $id_image) }}" alt="">
                             <a href="#" title="">Hai, {{ Auth::user()->name }}</a>
                             <i class="la la-sort-down"></i>
                         </div>
