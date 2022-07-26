@@ -105,8 +105,7 @@
                                         </div>
                                         <div class="post-st">
                                             <ul>
-                                                <li><a class="btn btn-danger active" href="#" data-toggle="modal" data-target="#postModal">Post
-                                                        a Job</a></li>
+                                                <li><a class="btn btn-danger active" href="#" data-toggle="modal" data-target="#postModal">Post</a></li>
                                             </ul>
                                         </div>
                                         @include('post.modal')
