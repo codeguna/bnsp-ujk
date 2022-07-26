@@ -21,7 +21,9 @@
 </head>
 
 <body>
-
+    @php
+    $id_image = Auth::user()->user_profile->image;
+    @endphp
     <div class="wrapper">
         <header>
             <div class="container">
@@ -82,7 +84,7 @@
                                         <div class="user-profile">
                                             <div class="username-dt">
                                                 <div class="usr-pic">
-                                                    @php($id_image = Auth::user()->user_profile->image)
+
                                                     <img height="120px" src="{{ url('/data_file/' . $id_image) }}" alt="">
                                                 </div>
                                             </div>
